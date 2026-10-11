@@ -1,0 +1,7 @@
+---
+- name: Local Infrastructure Diagnostics Playbook
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Run a basic diagnostic connectivity check
+      ansible.builtin.ping:
