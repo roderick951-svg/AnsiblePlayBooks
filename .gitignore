@@ -1,31 +1,60 @@
-# Built things
-_Debug/
-Compiled/
+# =========================================================================
+# Ansible Core & Runtime Files
+# =========================================================================
+# Avoid committing automatically generated retry files when playbooks fail
+*.retry
 
-# AudioCache can be rebuilt from sources
-AudioCache/
+# Ansible execution log files (if configured to write locally)
+*.log
+ansible-errors.log
 
-# Lockfile
-_OpenInEditor.lock
+# Local/temporary collections and roles downloaded via ansible-galaxy
+# (These should be managed via a collections/requirements.yml file instead)
+collections/
+roles/
+.ansible/
 
-# User settings
-Game.agf.user
-*.crm.user
+# =========================================================================
+# Secrets & Security Safeguards (CRITICAL)
+# =========================================================================
+# Explicitly block raw private keys accidentally placed in the workspace
+*.pem
+*.key
+*.id_rsa
+id_rsa*
 
-# Backups
-Game.agf.bak
-backup_acsprset.spr
+# Block explicit cleartext variable files
+# Tip: Use .vault.yml for files encrypted with Ansible Vault so they CAN be committed safely
+*secret*
+*password*
+credentials.yml
+vault_password_file
 
-# Memory dumps
-*.dmp
+# =========================================================================
+# Python Environment & Package Artifacts
+# =========================================================================
+# Ansible runs on Python; ignore compiled bytecode and local virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+.env
 
-# Temporary files
-# temporarily created during sprite or room background compression
-~aclzw.tmp
-# temporary, main game data, before getting packed into exe
-game28.dta
-# temporary build of the game before being moved to Compiled/ folder
-*.exe
+# =========================================================================
+# Editor & OS Specific Files
+# =========================================================================
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Log files
-warnings.log
+# VS Code and JetBrains/PyCharm project directories
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
