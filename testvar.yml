@@ -20,5 +20,4 @@
         fail_msg: "Input validation failed! Please check your email or phone number format in the survey."
         success_msg: "Inputs verified. Proceeding with AWS tasks."
 
-    - name: Next AWS task...
-      # Your actual AWS logic goes here and will only run if the step above passes
+  
