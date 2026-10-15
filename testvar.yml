@@ -1,0 +1,24 @@
+---
+- name: AWS Provisioning Playbook
+  hosts: localhost
+  gather_facts: false
+  
+  vars:
+    # These variables come directly from your Survey text fields
+    user_email: "{{ survey_email_input }}"
+    user_phone: "{{ survey_phone_input }}"
+
+  tasks:
+    - name: Validate Survey Inputs
+      ansible.builtin.assert:
+        that:
+          # 1. Validate Email using regex
+          - user_email | regex_search('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
+          
+          # 2. Validate Phone (e.g., exactly 10 digits)
+          - user_phone | regex_search('^\\d{10}$')
+        fail_msg: "Input validation failed! Please check your email or phone number format in the survey."
+        success_msg: "Inputs verified. Proceeding with AWS tasks."
+
+    - name: Next AWS task...
+      # Your actual AWS logic goes here and will only run if the step above passes
